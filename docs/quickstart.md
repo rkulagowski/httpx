@@ -140,7 +140,7 @@ which is used for HTML forms.
 }
 ```
 
-Form encoded data can also include multiple values form a given key.
+Form encoded data can also include multiple values for a given key.
 
 ```python
 >>> data = {'key1': ['value1', 'value2']}
@@ -320,7 +320,7 @@ Or stream the text, on a line-by-line basis...
 
 HTTPX will use universal line endings, normalising all cases to `\n`.
 
-In some cases you might want to access the raw bytes on the response without applying any HTTP content decoding. In this case any content encoding that the web server has applied such as `gzip`, `deflate`, or `brotli` will not be automatically decoded.
+In some cases you might want to access the raw bytes on the response without applying any HTTP content decoding. In this case, any content encoding that the web server has applied, such as `gzip`, `deflate`, or `brotli`, will not be automatically decoded.
 
 ```python
 >>> with httpx.stream("GET", "https://www.example.com") as r:
@@ -328,7 +328,7 @@ In some cases you might want to access the raw bytes on the response without app
 ...         print(chunk)
 ```
 
-If you're using streaming responses in any of these ways then the `response.content` and `response.text` attributes will not be available, and will raise errors if accessed. However you can also use the response streaming functionality to conditionally load the response body:
+If you're using streaming responses in any of these ways then the `response.content` and `response.text` attributes will not be available, and will raise errors if accessed. However, you can use the response streaming functionality to conditionally load the response body:
 
 ```python
 >>> with httpx.stream("GET", "https://www.example.com") as r:
@@ -357,7 +357,7 @@ To include cookies in an outgoing request, use the `cookies` parameter:
 ```
 
 Cookies are returned in a `Cookies` instance, which is a dict-like data structure
-with additional API for accessing cookies by their domain or path.
+with an additional API for accessing cookies by their domain or path.
 
 ```python
 >>> cookies = httpx.Cookies()
@@ -443,7 +443,7 @@ functions:
 
 To provide credentials for Digest authentication you'll need to instantiate
 a `DigestAuth` object with the plaintext username and password as arguments.
-This object can be then passed as the `auth` argument to the request methods
+This object can then be passed as the `auth` argument to the request methods
 as above:
 
 ```python
