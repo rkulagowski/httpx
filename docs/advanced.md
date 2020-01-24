@@ -168,7 +168,7 @@ password example-password
 ...
 ```
 
-When using `Client` instances, `trust_env` should be set on the client itself, rather that on the request methods:
+When using `Client` instances, `trust_env` should be set on the client itself, rather than on the request methods:
 
 ```python
 client = httpx.Client(trust_env=False)
@@ -177,7 +177,7 @@ client = httpx.Client(trust_env=False)
 ## HTTP Proxying
 
 HTTPX supports setting up HTTP proxies the same way that Requests does via the `proxies` parameter.
-For example to forward all HTTP traffic to `http://127.0.0.1:3080` and all HTTPS traffic
+For example, to forward all HTTP traffic to `http://127.0.0.1:3080` and all HTTPS traffic
 to `http://127.0.0.1:3081` your `proxies` config would look like this:
 
 ```python
@@ -317,7 +317,7 @@ response = client.get('http://example.com/')
 
 As mentioned in the [quickstart](/quickstart#sending-multipart-file-uploads)
 multipart file encoding is available by passing a dictionary with the
-name of the payloads as keys and either tuple of elements or a file-like object or a string as values.
+name of the payloads as keys and either a tuple of elements or a file-like object or a string as values.
 
 ```python
 >>> files = {'upload-file': ('report.xls', open('report.xls', 'rb'), 'application/vnd.ms-excel')}
@@ -332,14 +332,14 @@ name of the payloads as keys and either tuple of elements or a file-like object 
 }
 ```
 
-More specifically, if a tuple is used as a value, it must have between 2 and 3 elements:
+More specifically, if a tuple is used as a value, it must have either 2 or 3 elements:
 
 - The first element is an optional file name which can be set to `None`.
 - The second element may be a file-like object or a string which will be automatically
 encoded in UTF-8.
 - An optional third element can be used to specify the
 [MIME type](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_Types)
-of the file being uploaded. If not specified HTTPX will attempt to guess the MIME type based
+of the file being uploaded. If not specified, HTTPX will attempt to guess the MIME type based
 on the file name, with unknown file extensions defaulting to "application/octet-stream".
 If the file name is explicitly set to `None` then HTTPX will not include a content-type
 MIME header field.
@@ -380,7 +380,7 @@ class MyCustomAuth(httpx.Auth):
         yield request
 ```
 
-If the auth flow requires more that one request, you can issue multiple yields, and obtain the response in each case...
+If the auth flow requires more than one request, you can issue multiple yields, and obtain the response in each case...
 
 ```python
 class MyCustomAuth(httpx.Auth):
@@ -396,7 +396,7 @@ class MyCustomAuth(httpx.Auth):
           yield request
 ```
 
-Custom authentication classes are designed to not perform any I/O, so that they may be used with both sync and async client instances. If you are implementing an authentication scheme that requires the request body, then you need to indicate this on the class using a `requires_request_body` property.
+Custom authentication classes are designed notto  perform any I/O, so that they may be used with both sync and async client instances. If you are implementing an authentication scheme that requires the request body, then you need to indicate this on the class using a `requires_request_body` property.
 
 You will then be able to access `request.content` inside the `.auth_flow()` method.
 
@@ -437,7 +437,7 @@ import httpx
 r = httpx.get("https://example.org", verify="path/to/client.pem")
 ```
 
-You can also disable the SSL verification...
+You can also disable SSL verification...
 
 ```python
 import httpx
@@ -453,7 +453,7 @@ If you're using a `Client()` instance, then you should pass any SSL settings whe
 client = httpx.Client(verify=False)
 ```
 
-The `client.get(...)` method and other request methods *do not* support changing the SSL settings on a per-request basis. If you need different SSL settings in different cases you should use more that one client instance, with different settings on each. Each client will then be using an isolated connection pool with a specific fixed SSL configuration on all connections within that pool.
+The `client.get(...)` method and other request methods *do not* support changing the SSL settings on a per-request basis. If you need different SSL settings in different cases you should use more than one client instance, with different settings on each. Each client will then be using an isolated connection pool with a specific fixed SSL configuration on all connections within that pool.
 
 ### Making HTTPS requests to a local server
 
